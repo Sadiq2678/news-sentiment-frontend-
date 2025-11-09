@@ -6,7 +6,10 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/api/api_sentiments/')
+    // Replace with your actual Render backend URL
+    const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://news-sentiment-backend-b6d1.onrender.com';
+    
+    axios.get(`${API_BASE_URL}/api/api_sentiments/`)
       .then(res => {
         setArticles(res.data.data || res.data);
         setLoading(false);
